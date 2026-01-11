@@ -1,0 +1,31 @@
+name: Debugging Demo
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  USER_1: "foo_user"
+  USER_2: "bar_user"
+
+jobs:
+    debug_job:
+        runs_on: ubuntu-latest
+        steps:
+        - name: step 1 - checkout Repo
+          uses: actions/checkout@v4
+
+
+        - name: step 2 - set USER_1 as USERNAME
+          run: |
+            echo "USERNAME=$USER_1" >> $GITHUB_ENV
+
+        - name: step 3 - Printing USERNAME
+          run: |
+            echo "Printing USERNAME env variable from previous step"
+            echo "Username ==== $USERNAME"
+            exit 1
+
+        - name: step 4 - Printing USER_2
+          run: |
+            echo $USER_2
