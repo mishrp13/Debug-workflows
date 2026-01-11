@@ -10,7 +10,7 @@ env:
 
 jobs:
     debug_job:
-        runs_on: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
         - name: step 1 - checkout Repo
           uses: actions/checkout@v4
